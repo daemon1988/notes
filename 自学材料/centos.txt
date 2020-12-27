@@ -1,0 +1,46 @@
+1、Centos：
+
+root
+aiWo*&!!26~
+
+shiyong
+root123456
+
+2、Oracle：
+heroes_123@163.com00:50:56:24:9C:C9
+Sy1988119
+
+
+3、mysql
+root
+123456
+
+4、mycat
+root
+123456
+
+5、nginx
+shiyong
+123456
+
+三、常用到的linux命令：
+	service iptables stop 	防火墙关闭
+	ifconfig -a 		网络适配器配置信息
+	netstat -anutp		查看网络状态
+	/etc/init.d/network restart	重启网卡
+	
+	systemctl stop firewalld.service #停止firewall
+	systemctl disable firewalld.service #禁止firewall开机启动
+	firewall-cmd --state #查看默认防火墙状态（关闭后显示notrunning，开启后显示running）
+
+
+	从动态IP改为静态IP时，需要关闭ssh检测：/etc/ssh/sshd_config（此步骤可不做）
+		UseDNS yes->UseDNS no
+	然后重启ssh服务：systemctl restart sshd
+
+
+四、遇到的问题：
+1、虚拟机tomcat启动了，但是无法访问？
+	检查网络状态、防火墙状态，再检查网卡是否启动
+2、Bringing up interface eth0: Device eth0 does not seem to be ...?
+	

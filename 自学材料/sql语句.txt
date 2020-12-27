@@ -1,0 +1,4 @@
+1、区分度公式：
+   select count(distinct col_name)/count(*) from table
+2、查看死锁
+   select * from information_schema.innodb_locks;

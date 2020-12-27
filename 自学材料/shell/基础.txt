@@ -1,0 +1,96 @@
+1、#！/bin/bash   约定用哪种解释器执行脚本
+2、echo	  用于输出文本
+3、chmod +x ./test.sh   使脚本具有执行权限
+4、linux系统启动过程：
+	内核的引导：BIOS开机自检
+	运行init：读取配置文件
+	系统初始化
+	建立终端
+	用户登录系统
+
+init程序的类型：
+
+SysV: init, CentOS 5之前, 配置文件： /etc/inittab。
+Upstart: init,CentOS 6, 配置文件： /etc/inittab, /etc/init/*.conf。
+Systemd： systemd, CentOS 7,配置文件： /usr/lib/systemd/system、 /etc/systemd/system。
+
+
+Linux系统有7个运行级别(runlevel)：
+
+运行级别0：系统停机状态，系统默认运行级别不能设为0，否则不能正常启动
+运行级别1：单用户工作状态，root权限，用于系统维护，禁止远程登陆
+运行级别2：多用户状态(没有NFS)
+运行级别3：完全的多用户状态(有NFS)，登陆后进入控制台命令行模式
+运行级别4：系统未使用，保留
+运行级别5：X11控制台，登陆后进入图形GUI模式
+运行级别6：系统正常关闭并重启，默认运行级别不能设为6，否则不能正常启动
+
+5、Linux 关机
+在linux领域内大多用在服务器上，很少遇到关机的操作。毕竟服务器上跑一个服务是永无止境的，除非特殊情况下，不得已才会关机。
+
+正确的关机流程为：sync > shutdown > reboot > halt
+
+关机指令为：shutdown ，你可以man shutdown 来看一下帮助文档。
+
+例如你可以运行如下命令关机：
+
+sync 将数据由内存同步到硬盘中。
+
+shutdown 关机指令，你可以man shutdown 来看一下帮助文档。例如你可以运行如下命令关机：
+
+shutdown –h 10 ‘This server will shutdown after 10 mins’ 这个命令告诉大家，计算机将在10分钟后关机，并且会显示在登陆用户的当前屏幕中。
+
+shutdown –h now 立马关机
+
+shutdown –h 20:25 系统会在今天20:25关机
+
+shutdown –h +10 十分钟后关机
+
+shutdown –r now 系统立马重启
+
+shutdown –r +10 系统十分钟后重启
+
+reboot 就是重启，等同于 shutdown –r now
+
+halt 关闭系统，等同于shutdown –h now 和 poweroff
+最后总结一下，不管是重启系统还是关闭系统，首先要运行 sync 命令，把内存中的数据写到磁盘中。
+
+关机的命令有 shutdown –h now halt poweroff 和 init 0 , 重启系统的命令有 shutdown –r now reboot init 6。
+
+6、source命令（简写：.）：运行某个文件
+7、chmod命令：更改文件属性
+
+各属性权限的分数对照表如下：
+读  r:4
+写  w:2
+执行x:1
+
+例如：chmod 777 test.txt    给这个文件赋予属主 所有权限、属组 所有权限、其他用户  所有权限
+
+各身份权限对照表：
+u   属主 
+g   属组
+o   其他用户
+a   所有用户
++   加入
+-   减去
+=   设定
+
+例如：-rw-r--r-- 1 root root 0 Nov 15 10:32 test1
+运行chmod u=rwx,g=rx,o=r test1.txt
+结果为-rwxr-xr--
+
+8、pwd：显示当前目录
+   mkdir：创建新的目录
+   rmdir：删除空的目录
+   cp：复制文件或目录
+   rm：移除文件或目录
+   mv：移动文件与目录，或修改文件与目录的名称
+9、文件内容查看
+   cat  由第一行开始显示文件内容
+   tac  从最后一行开始显示，可以看出 tac 是 cat 的倒着写！
+   nl   显示的时候，顺道输出行号！
+   more 一页一页的显示文件内容
+   less 与 more 类似，但是比 more 更好的是，他可以往前翻页！
+   head 只看头几行
+   tail 只看尾巴几行
